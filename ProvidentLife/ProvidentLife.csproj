@@ -42,8 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Agent.cs" />
+    <Compile Include="Classes\Client.cs" />
+    <Compile Include="Classes\InsurancePolicy.cs" />
+    <Compile Include="Classes\Junior Agent.cs" />
+    <Compile Include="Classes\OneTimeInsurancePolicy.cs" />
+    <Compile Include="Classes\PeriodicInsurancePolicy.cs" />
+    <Compile Include="Classes\Senior Agent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Rider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
