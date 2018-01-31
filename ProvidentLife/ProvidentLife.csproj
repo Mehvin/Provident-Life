@@ -42,29 +42,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\CarPayoutHandler.cs" />
-    <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\ClientPayouts.cs" />
-    <Compile Include="Classes\Employee.cs" />
-    <Compile Include="Classes\InactiveIPState.cs" />
-    <Compile Include="Classes\InsurancePolicy.cs" />
-    <Compile Include="Classes\Invoice.cs" />
-    <Compile Include="Classes\IPState.cs" />
-    <Compile Include="Classes\Iterator.cs" />
-    <Compile Include="Classes\LapsedIPState.cs" />
-    <Compile Include="Classes\MedicalPayoutHandler.cs" />
-    <Compile Include="Classes\Oberver.cs" />
-    <Compile Include="Classes\OneTimeInsurancePolicy.cs" />
-    <Compile Include="Classes\OngoingIPState.cs" />
-    <Compile Include="Classes\Payout.cs" />
-    <Compile Include="Classes\PayoutHandler.cs" />
-    <Compile Include="Classes\PeriodicInsurancePolicy.cs" />
-    <Compile Include="Classes\Premium.cs" />
-    <Compile Include="Classes\Subject.cs" />
-    <Compile Include="Classes\TravelPayoutHandler.cs" />
+    <Compile Include="Strategy Design\CarPayoutHandler.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="ClientPayouts.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="State Design\InactiveIPState.cs" />
+    <Compile Include="InsurancePolicy.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="State Design\IPState.cs" />
+    <Compile Include="Iterator Design\Iterator.cs" />
+    <Compile Include="State Design\LapsedIPState.cs" />
+    <Compile Include="Strategy Design\MedicalPayoutHandler.cs" />
+    <Compile Include="Observer Design\Observer.cs" />
+    <Compile Include="OneTimeInsurancePolicy.cs" />
+    <Compile Include="State Design\OngoingIPState.cs" />
+    <Compile Include="Payout.cs" />
+    <Compile Include="Strategy Design\PayoutHandler.cs" />
+    <Compile Include="PeriodicInsurancePolicy.cs" />
+    <Compile Include="Premium.cs" />
+    <Compile Include="Observer Design\Subject.cs" />
+    <Compile Include="Strategy Design\TravelPayoutHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\Rider.cs" />
+    <Compile Include="Rider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

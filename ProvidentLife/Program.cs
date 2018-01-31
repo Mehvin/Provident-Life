@@ -14,7 +14,7 @@ namespace ProvidentLife
             int option = 0;
             bool programrun = true;
 
-            Console.WriteLine("Login - Provident Life System");
+            Console.WriteLine("----Provident Life System----");
             Console.Write("Username: ");
             user = Console.ReadLine();
 
@@ -36,7 +36,7 @@ namespace ProvidentLife
                     //display policy menu
                     displayPolicyMenu();
                 }
-                else if (option == 9)
+                else if (option == 0)
                 {
                     //exit
                     programrun = false;
@@ -47,9 +47,9 @@ namespace ProvidentLife
         static void displayMenu()
         {
             Console.WriteLine("\nProvident Life System");
-            Console.WriteLine("1. Create New Policy");
-            Console.WriteLine("2. View All Policy");
-            Console.WriteLine("9. Exit");
+            Console.WriteLine("[1] Create New Policy");
+            Console.WriteLine("[2] View All Policy"); // if user = admin show all , if user != admin show their own policies only
+            Console.WriteLine("[0] Exit");
         }
 
         static void displayPolicyMenu()

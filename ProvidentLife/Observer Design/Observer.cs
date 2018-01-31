@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife
+namespace ProvidentLife.Classes
 {
-    class InsurancePolicy
+    class Observer : Object
     {
     }
 }
