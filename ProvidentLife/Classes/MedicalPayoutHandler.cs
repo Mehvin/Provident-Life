@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class Junior_Agent : Agent
+    class MedicalPayoutHandler : PayoutHandler
     {
     }
 }
