@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class Observer : Object
+    interface PayoutHandler
     {
+        Payout PayOut(string severity);
     }
 }

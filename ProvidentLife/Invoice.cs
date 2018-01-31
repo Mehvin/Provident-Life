@@ -11,24 +11,24 @@ namespace ProvidentLife.Classes
         private int invoiceID;
         private string paymentType;
 
-        public double getinvoiceID()
+        public double GetInvoiceID()
         {
             return invoiceID;
         }
 
-        public void setinvoiceID(int id)
+        public void SetInvoiceID(int invoiceID)
         {
-            invoiceID = id;
+            this.invoiceID = invoiceID;
         }
 
-        public string getpaymentType()
+        public string GetPaymentType()
         {
             return paymentType;
         }
 
-        public void setDate(string pt)
+        public void SetDate(string paymentType)
         {
-            paymentType = pt;
+            this.paymentType = paymentType;
         }
     }
 }

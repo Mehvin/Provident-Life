@@ -15,9 +15,9 @@ namespace ProvidentLife.Classes
         private string agentRank;
         private bool isAdmin;
 
-        static public string SENIOR;
-        static public string JUNIOR;
-        static public string NORMAL;
+        public static string SENIOR = "SENIOR";
+        public static string JUNIOR = "JUNIOR";
+        public static string NORMAL = "NORMAL";
 
         public double calculatePay()
         {
@@ -39,9 +39,9 @@ namespace ProvidentLife.Classes
             return isAdmin;
         }
 
-        public void setIsAdmin(bool iA)
+        public void setIsAdmin(bool isAdmin)
         {
-            isAdmin = iA;
+            this.isAdmin = isAdmin;
         }
     }
 }

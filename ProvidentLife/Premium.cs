@@ -12,17 +12,17 @@ namespace ProvidentLife.Classes
         private double amountPayable;
         private DateTime dueDate;
 
-        public int getId()
+        public int GetId()
         {
             return id;
         }
 
-        public double getAmountPayable()
+        public double GetAmountPayable()
         {
             return amountPayable;
         }
 
-        public DateTime getDueDate()
+        public DateTime GetDueDate()
         {
             return dueDate;
         }

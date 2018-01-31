@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProvidentLife.Classes;
 
 namespace ProvidentLife
 {
-    class InsurancePolicy
+    abstract class InsurancePolicy
     {
         private int policyID;
         private List <string> termsCond;
@@ -20,74 +21,76 @@ namespace ProvidentLife
 
         //public Payout performPayOut(string severity)
 
-        public int getPolicyID()
+        public abstract Premium GetPremium();
+
+        public int GetPolicyID()
         {
             return policyID;
         }
 
-        public void setPolicyID(int pd)
+        public void SetPolicyID(int pd)
         {
             policyID = pd;
         }
 
-        public List<string> getTermsCond()
+        public List<string> GetTermsCond()
         {
             return termsCond;
         }
 
-        public void setTermsCond(List<string> tc)
+        public void SetTermsCond(List<string> termsCond)
         {
-            termsCond = tc;
+            this.termsCond = termsCond;
         }
 
-        public string getStatus()
+        public string GetStatus()
         {
             return status;
         }
 
-        public void setStatus(string s)
+        public void SetStatus(string status)
         {
-            status = s;
+            this.status = status;
         }
     
-        public DateTime getStartDate()
+        public DateTime GetStartDate()
         {
             return startDate;
         }
 
-        public void setStartDate(DateTime sd)
+        public void SetStartDate(DateTime startDate)
         {
-            startDate = sd;
+            this.startDate = startDate;
         }
 
-        public DateTime getMaturityDate()
+        public DateTime GetMaturityDate()
         {
             return maturityDate;
         }
 
-        public void setMaturityDate(DateTime md)
+        public void SetMaturityDate(DateTime maturityDate)
         {
-            maturityDate = md;
+            this.maturityDate = maturityDate;
         }
 
-        public double getTotalAmount()
+        public double GetTotalAmount()
         {
             return totalAmount;
         }
 
-        public void setTotalAmount(double ta)
+        public void SetTotalAmount(double totalAmount)
         {
-            totalAmount = ta;
+            this.totalAmount = totalAmount;
         }
 
-        public double getFee()
+        public double GetFee()
         {
             return fee;
         }
 
-        public void setFee(double f)
+        public void SetFee(double fee)
         {
-            fee = f;
+            this.fee = fee;
         }
     }
 }

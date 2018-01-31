@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    interface PayoutHandler
+    class TravelPayoutHandler : PayoutHandler
     {
-        Payout payOut(string severity);
+        public Payout PayOut(string severity)
+        {
+            return null; //check payout return
+        }
     }
 }

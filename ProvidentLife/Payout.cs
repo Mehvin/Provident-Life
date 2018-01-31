@@ -11,24 +11,24 @@ namespace ProvidentLife.Classes
         private double amount;
         private DateTime date;
 
-        public double getAmount()
+        public double GetAmount()
         {
             return amount;
         }
 
-        public void setAmount(double a)
+        public void SetAmount(double amount)
         {
-            amount = a;
+            this.amount = amount;
         }
 
-        public DateTime getDate()
+        public DateTime GetDate()
         {
             return date;
         }
 
-        public void setDate(DateTime d)
+        public void SetDate(DateTime date)
         {
-            date = d;
+            this.date = date;
         }
     }
 }

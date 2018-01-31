@@ -10,9 +10,9 @@ namespace ProvidentLife.Classes
     {
         private int days;
 
-        public Premium GetPremium()
+        public override Premium GetPremium()
         {
-            return null;
+            throw new NotImplementedException();
         }
     }
 }

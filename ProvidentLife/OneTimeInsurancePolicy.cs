@@ -8,5 +8,9 @@ namespace ProvidentLife.Classes
 {
     class OneTimeInsurancePolicy : InsurancePolicy
     {
+        public override Premium GetPremium()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

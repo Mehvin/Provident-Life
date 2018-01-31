@@ -33,9 +33,9 @@ namespace ProvidentLife
             return address;
         }
 
-        public void setAddress(string a)
+        public void setAddress(string address)
         {
-            address = a;
+            this.address = address;
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class CarPayoutHandler : PayoutHandler
+    class MedicalPayoutHandler : PayoutHandler
     {
-        public Payout payOut(string severity)
+        public Payout PayOut(string severity)
         {
             return null; //check payout return
         }
