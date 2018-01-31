@@ -8,5 +8,10 @@ namespace ProvidentLife.Classes
 {
     interface IPState
     {
+        void payFee();
+        void payPeriodic();
+        void agentCancelPolicy();
+        void agentLapsedPolicy();
+        void clientCancelPolicy();
     }
 }

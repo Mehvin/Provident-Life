@@ -8,5 +8,9 @@ namespace ProvidentLife.Classes
 {
     class TravelPayoutHandler : PayoutHandler
     {
+        public Payout payOut(string severity)
+        {
+            return null; //check payout return
+        }
     }
 }

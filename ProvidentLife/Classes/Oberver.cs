@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class PeriodicInsurancePolicy : InsurancePolicy
+    interface Oberver : Subject
     {
-        private int days;
-
-        public Premium GetPremium()
-        {
-            return null;
-        }
     }
 }

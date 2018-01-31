@@ -8,5 +8,6 @@ namespace ProvidentLife.Classes
 {
     interface PayoutHandler
     {
+        Payout payOut(string severity);
     }
 }

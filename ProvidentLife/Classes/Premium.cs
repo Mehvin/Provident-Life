@@ -8,5 +8,23 @@ namespace ProvidentLife.Classes
 {
     class Premium
     {
+        private int id;
+        private double amountPayable;
+        private DateTime dueDate;
+
+        public int getId()
+        {
+            return id;
+        }
+
+        public double getAmountPayable()
+        {
+            return amountPayable;
+        }
+
+        public DateTime getDueDate()
+        {
+            return dueDate;
+        }
     }
 }

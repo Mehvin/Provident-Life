@@ -8,5 +8,8 @@ namespace ProvidentLife.Classes
 {
     interface Iterator
     {
+        Object next();
+        bool hasNext();
+        void remove();
     }
 }

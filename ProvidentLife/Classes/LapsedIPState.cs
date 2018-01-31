@@ -8,5 +8,29 @@ namespace ProvidentLife.Classes
 {
     class LapsedIPState : IPState
     {
+        public void payFee()
+        {
+
+        }
+
+        public void payPeriodic()
+        {
+
+        }
+
+        public void agentCancelPolicy()
+        {
+
+        }
+
+        public void agentLapsedPolicy()
+        {
+
+        }
+
+        public void clientCancelPolicy()
+        {
+
+        }
     }
 }

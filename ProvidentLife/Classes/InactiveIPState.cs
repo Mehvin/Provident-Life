@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class OngoingIPState : IPState
+    class InactiveIPState : IPState
     {
         public void payFee()
         {
