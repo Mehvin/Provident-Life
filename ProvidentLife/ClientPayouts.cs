@@ -10,6 +10,26 @@ namespace ProvidentLife.Classes
     {
         private List<Payout> payouts = new List<Payout>();
 
+        public ClientPayouts()
+        {
+            this.payouts = new List<Payout>();
+        }
+
+        public List<Payout> GetSortedRecent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Payout> GetSortedHighest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Payout> GetSortedLowest()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasNext()
         {
             throw new NotImplementedException();

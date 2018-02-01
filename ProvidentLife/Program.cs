@@ -20,7 +20,7 @@ namespace ProvidentLife
 
             while (programrun)
             {
-                displayMenu();
+                DisplayMenu();
                 Console.Write("Enter option: ");
                 option = Convert.ToInt32(Console.ReadLine());
 
@@ -34,7 +34,7 @@ namespace ProvidentLife
 
                     //Selects policy number
                     //display policy menu
-                    displayPolicyMenu();
+                    DisplayPolicyMenu();
                 }
                 else if (option == 0)
                 {
@@ -44,7 +44,7 @@ namespace ProvidentLife
             }       
         }
             
-        static void displayMenu()
+        static void DisplayMenu()
         {
             Console.WriteLine("\nProvident Life System");
             Console.WriteLine("[1] Create New Policy");
@@ -52,7 +52,7 @@ namespace ProvidentLife
             Console.WriteLine("[0] Exit");
         }
 
-        static void displayPolicyMenu()
+        static void DisplayPolicyMenu()
         {
             Console.WriteLine("\n1. Generate Alerts");
             Console.WriteLine("2. Edit Policy");

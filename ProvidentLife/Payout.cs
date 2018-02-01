@@ -11,6 +11,15 @@ namespace ProvidentLife.Classes
         private double amount;
         private DateTime date;
 
+        private InsurancePolicy insurancePolicy;
+
+        public Payout(double amount, DateTime date, InsurancePolicy insurancePolicy)
+        {
+            this.amount = amount;
+            this.date = date;
+            this.insurancePolicy = insurancePolicy;
+        }
+
         public double GetAmount()
         {
             return amount;

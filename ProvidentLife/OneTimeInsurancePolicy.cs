@@ -10,6 +10,7 @@ namespace ProvidentLife.Classes
     {
         public override Premium GetPremium()
         {
+            // return a single premium
             throw new NotImplementedException();
         }
     }

@@ -5,21 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using ProvidentLife.Classes;
 
-namespace ProvidentLife
+namespace ProvidentLife.Classes
 {
     abstract class InsurancePolicy
     {
-        private int policyID;
-        private List <string> termsCond;
-        private string policyType;
-        private string status;
-        private DateTime startDate;
-        private DateTime maturityDate;
-        private double totalAmount;
-        // private PayoutHandler payoutHandler;
-        private double fee;
+        // Properties
+        protected int policyID;
+        protected List<string> termsCond;
+        protected DateTime startDate;
+        protected DateTime maturityDate;
+        protected double totalAmount;
+        protected double fee;
 
-        //public Payout performPayOut(string severity)
+        protected Client client;
+        protected Employee employee;
+
+        // Strategy pattern
+        protected PayoutStrategy payoutStrategy;
+
+        // State machine
+        private IPState ongoingIPState;
+        private IPState lapsedIPState;
+        private IPState inactiveIPState;
+        private IPState state;
 
         public abstract Premium GetPremium();
 
@@ -41,16 +49,6 @@ namespace ProvidentLife
         public void SetTermsCond(List<string> termsCond)
         {
             this.termsCond = termsCond;
-        }
-
-        public string GetStatus()
-        {
-            return status;
-        }
-
-        public void SetStatus(string status)
-        {
-            this.status = status;
         }
     
         public DateTime GetStartDate()
@@ -91,6 +89,41 @@ namespace ProvidentLife
         public void SetFee(double fee)
         {
             this.fee = fee;
+        }
+
+        // Strategy pattern
+        public Payout PerformPayOut(string severity)
+        {
+            Payout payout = this.payoutStrategy.PayOut(severity);
+
+            if (payout != null)
+            {
+                //update state machine?
+                
+            }
+
+            return payout;
+        }
+
+        // State machine
+        public IPState GetOngoingIPState()
+        {
+            return ongoingIPState;
+        }
+
+        public IPState GetLapsedIPState()
+        {
+            return lapsedIPState;
+        }
+
+        public IPState GetInactiveIPState()
+        {
+            return inactiveIPState;
+        }
+
+        public void SetIPState(IPState state)
+        {
+            this.state = state;
         }
     }
 }

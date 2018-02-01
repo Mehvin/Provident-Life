@@ -9,9 +9,11 @@ namespace ProvidentLife.Classes
     class PeriodicInsurancePolicy : InsurancePolicy
     {
         private int days;
+        private int periodicDays;
 
         public override Premium GetPremium()
         {
+            // fee / days?
             throw new NotImplementedException();
         }
     }

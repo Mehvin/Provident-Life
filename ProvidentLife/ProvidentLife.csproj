@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StrategyDesign\CarPayoutHandler.cs" />
+    <Compile Include="StrategyDesign\CarPayoutStrategy.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientPayouts.cs" />
     <Compile Include="Employee.cs" />
@@ -52,16 +52,16 @@
     <Compile Include="StateDesign\IPState.cs" />
     <Compile Include="IteratorDesign\Iterator.cs" />
     <Compile Include="StateDesign\LapsedIPState.cs" />
-    <Compile Include="StrategyDesign\MedicalPayoutHandler.cs" />
+    <Compile Include="StrategyDesign\MedicalPayoutStrategy.cs" />
     <Compile Include="ObserverDesign\Observer.cs" />
     <Compile Include="OneTimeInsurancePolicy.cs" />
     <Compile Include="StateDesign\OngoingIPState.cs" />
     <Compile Include="Payout.cs" />
-    <Compile Include="StrategyDesign\PayoutHandler.cs" />
+    <Compile Include="StrategyDesign\PayoutStrategy.cs" />
     <Compile Include="PeriodicInsurancePolicy.cs" />
     <Compile Include="Premium.cs" />
     <Compile Include="ObserverDesign\Subject.cs" />
-    <Compile Include="StrategyDesign\TravelPayoutHandler.cs" />
+    <Compile Include="StrategyDesign\TravelPayoutStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rider.cs" />

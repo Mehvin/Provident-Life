@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProvidentLife.Classes;
 
 namespace ProvidentLife
 {
@@ -13,27 +14,39 @@ namespace ProvidentLife
         private int accountID;
         private string address;
 
-        public int getClientID()
+        private ClientPayouts clientPayouts;
+
+        public Client(int clientID, string name, int accountID, string address)
+        {
+            this.clientID = clientID;
+            this.name = name;
+            this.accountID = accountID;
+            this.address = address;
+
+            this.clientPayouts = new ClientPayouts();
+        }
+
+        public int GetClientID()
         {
             return clientID;
         }
 
-        public string getName()
+        public string GetName()
         {
             return name;
         }
 
-        public int getAccountID()
+        public int GetAccountID()
         {
             return accountID;
         }
 
-        public string getAddress()
+        public string GetAddress()
         {
             return address;
         }
 
-        public void setAddress(string address)
+        public void SetAddress(string address)
         {
             this.address = address;
         }

@@ -12,6 +12,16 @@ namespace ProvidentLife.Classes
         private double amountPayable;
         private DateTime dueDate;
 
+        private InsurancePolicy policy;
+
+        public Premium(int id, double amountPayable, DateTime dueDate, InsurancePolicy policy)
+        {
+            this.id = id;
+            this.amountPayable = amountPayable;
+            this.dueDate = dueDate;
+            this.policy = policy;
+        }
+
         public int GetId()
         {
             return id;
@@ -25,6 +35,11 @@ namespace ProvidentLife.Classes
         public DateTime GetDueDate()
         {
             return dueDate;
+        }
+
+        public InsurancePolicy GetInsurancePolicy()
+        {
+            return policy;
         }
     }
 }

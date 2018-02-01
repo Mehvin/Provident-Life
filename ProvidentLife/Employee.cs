@@ -15,31 +15,51 @@ namespace ProvidentLife.Classes
         private string agentRank;
         private bool isAdmin;
 
-        public static string SENIOR = "SENIOR";
-        public static string JUNIOR = "JUNIOR";
-        public static string NORMAL = "NORMAL";
+        public static string SENIOR_RANK = "SENIOR";
+        public static string JUNIOR_RANK = "JUNIOR";
+        public static string NORMAL_RANK = "NORMAL";
 
-        public double calculatePay()
+        public Employee(int agentID, string name, string agentRank, bool isAdmin)
+        {
+            this.agentID = agentID;
+            this.name = name;
+            this.policiesSold = 0;
+            this.commissionPercent = 0;
+            this.agentRank = agentRank;
+            this.isAdmin = isAdmin;
+        }
+
+        public double CalculatePay()
         {
             return 0.0 ; //implementation
         }
 
-        public string getRank()
+        public int GetPoliciesSold()
+        {
+            return policiesSold;
+        }
+
+        public double GetCommissionPercent()
+        {
+            return commissionPercent;
+        }
+
+        public string GetRank()
         {
             return agentRank;
         }
 
-        public void setRank(string rank)
+        public void SetRank(string rank)
         {
             agentRank = rank;
         }
 
-        public bool getisAdmin()
+        public bool GetIsAdmin()
         {
             return isAdmin;
         }
 
-        public void setIsAdmin(bool isAdmin)
+        public void SetIsAdmin(bool isAdmin)
         {
             this.isAdmin = isAdmin;
         }

@@ -10,15 +10,23 @@ namespace ProvidentLife.Classes
     {
         private int invoiceID;
         private string paymentType;
+        private DateTime dateTime;
+
+        private Premium premium;
+        private Client client;
+
+        public Invoice(int invoiceID, string paymentType, DateTime dateTime, Premium premium, Client client)
+        {
+            this.invoiceID = invoiceID;
+            this.paymentType = paymentType;
+            this.dateTime = dateTime;
+            this.premium = premium;
+            this.client = client;
+        }
 
         public double GetInvoiceID()
         {
             return invoiceID;
-        }
-
-        public void SetInvoiceID(int invoiceID)
-        {
-            this.invoiceID = invoiceID;
         }
 
         public string GetPaymentType()
@@ -26,9 +34,10 @@ namespace ProvidentLife.Classes
             return paymentType;
         }
 
-        public void SetDate(string paymentType)
+        public DateTime GetDateTime()
         {
-            this.paymentType = paymentType;
+            return dateTime;
         }
+
     }
 }
