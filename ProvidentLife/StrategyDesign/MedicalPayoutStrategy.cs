@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class MedicalPayoutHandler : PayoutHandler
+    class MedicalPayoutStrategy : PayoutStrategy
     {
         public Payout PayOut(string severity)
         {
