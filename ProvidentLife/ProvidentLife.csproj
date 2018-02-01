@@ -42,26 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Strategy Design\CarPayoutHandler.cs" />
+    <Compile Include="StrategyDesign\CarPayoutHandler.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientPayouts.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="State Design\InactiveIPState.cs" />
+    <Compile Include="StateDesign\InactiveIPState.cs" />
     <Compile Include="InsurancePolicy.cs" />
     <Compile Include="Invoice.cs" />
-    <Compile Include="State Design\IPState.cs" />
-    <Compile Include="Iterator Design\Iterator.cs" />
-    <Compile Include="State Design\LapsedIPState.cs" />
-    <Compile Include="Strategy Design\MedicalPayoutHandler.cs" />
-    <Compile Include="Observer Design\Observer.cs" />
+    <Compile Include="StateDesign\IPState.cs" />
+    <Compile Include="IteratorDesign\Iterator.cs" />
+    <Compile Include="StateDesign\LapsedIPState.cs" />
+    <Compile Include="StrategyDesign\MedicalPayoutHandler.cs" />
+    <Compile Include="ObserverDesign\Observer.cs" />
     <Compile Include="OneTimeInsurancePolicy.cs" />
-    <Compile Include="State Design\OngoingIPState.cs" />
+    <Compile Include="StateDesign\OngoingIPState.cs" />
     <Compile Include="Payout.cs" />
-    <Compile Include="Strategy Design\PayoutHandler.cs" />
+    <Compile Include="StrategyDesign\PayoutHandler.cs" />
     <Compile Include="PeriodicInsurancePolicy.cs" />
     <Compile Include="Premium.cs" />
-    <Compile Include="Observer Design\Subject.cs" />
-    <Compile Include="Strategy Design\TravelPayoutHandler.cs" />
+    <Compile Include="ObserverDesign\Subject.cs" />
+    <Compile Include="StrategyDesign\TravelPayoutHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rider.cs" />
