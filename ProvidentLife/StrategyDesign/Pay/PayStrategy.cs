@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class MedicalPayoutStrategy : PayoutStrategy
+    interface PayStrategy
     {
-        public Payout PayOut(string severity)
-        {
-            return null; //check payout return
-        }
+        Employee CalculatePay ();
     }
 }

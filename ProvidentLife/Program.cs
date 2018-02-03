@@ -93,19 +93,16 @@ namespace ProvidentLife
             }
         }
 
-        static void createPolicy()
+        static void createPolicy() //Done by Melvin
         {
+            int moreRiders = 1;
+
             //Loop to get all clients and display it
 
             Console.Write("Select a client: ");
             int clientNo = Convert.ToInt32(Console.ReadLine());
 
-            //Loop to get list of policy types and display it
-
-            Console.Write("Select a policy type: ");
-            int policyType = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Select premium type(1-One Time| 2-Periodic): ");
+            Console.Write("Select premium type (1-One Time | 2-Periodic): ");
             int premiumType = Convert.ToInt32(Console.ReadLine());
 
             if (premiumType == 2)
@@ -114,17 +111,31 @@ namespace ProvidentLife
                 int noOfDays = Convert.ToInt32(Console.ReadLine());
             }
 
-            Console.Write("Enter total amount: $");
-            int totalAmt = Convert.ToInt32(Console.ReadLine());
-
             Console.Write("Enter maturity date: ");
             DateTime maturityDate = Convert.ToDateTime(Console.ReadLine());
+            
+            while (moreRiders == 1)
+            {
+                Console.Write("Enter in policy description: ");
+                string desc = Console.ReadLine();
 
-            Console.Write("Enter no. of additional riders: ");
-            int addRiders = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter policy type: ");
+                string policyType = Console.ReadLine();
 
-            Console.Write("Enter terms and conditions: ");
-            string TnC = Console.ReadLine();
+                Console.Write("Enter payout amount: $");
+                int payOut = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter total amount: $");
+                int totalAmt = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter terms and conditions: ");
+                string TnC = Console.ReadLine();
+
+                Console.Write("Are there any more riders? (1- Yes | 2- No): ");
+                moreRiders = Convert.ToInt32(Console.ReadLine());
+
+                // Rider r = new Rider(); //create new rider here
+            }
 
             //Display details of insurance policy
 
@@ -133,7 +144,7 @@ namespace ProvidentLife
 
             if (confirm == 1)
             {
-                // create new policy
+                // create new policy here
                 Console.WriteLine("Policy created!");
             }
         }
