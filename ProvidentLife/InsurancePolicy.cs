@@ -16,6 +16,7 @@ namespace ProvidentLife.Classes
         protected DateTime maturityDate;
         protected double totalAmount;
         protected double fee;
+        protected double totalPenalty;
 
         protected Client client;
         protected Employee employee;
@@ -81,14 +82,19 @@ namespace ProvidentLife.Classes
             this.totalAmount = totalAmount;
         }
 
-        public double GetFee()
+        public double GetTotalPenalty()
         {
-            return fee;
+            return totalPenalty;
         }
 
-        public void SetFee(double fee)
+        public void SetTotalPenalty(double penalty)
         {
-            this.fee = fee;
+            this.totalPenalty = penalty;
+        }
+
+        public void PayFee()
+        {
+            Console.WriteLine("Paid fee of $" + fee);
         }
 
         // Strategy pattern
