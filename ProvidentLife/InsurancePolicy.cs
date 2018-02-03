@@ -13,12 +13,14 @@ namespace ProvidentLife.Classes
         protected int policyID;
         protected List<string> termsCond;
         protected DateTime startDate;
-        protected DateTime maturityDate;
+        protected DateTime maturedDate;
         protected double totalAmount;
         protected double fee;
+        protected double totalPenalty;
 
         protected Client client;
         protected Employee employee;
+        protected List<Rider> riders;
 
         // Strategy pattern
         protected PayoutStrategy payoutStrategy;
@@ -29,56 +31,27 @@ namespace ProvidentLife.Classes
         private IPState inactiveIPState;
         private IPState state;
 
-        public abstract Premium GetPremium();
+        public InsurancePolicy(
+            int policyID,
+            List<string> termsAndCond,
+            DateTime startDate,
+            DateTime maturedDate,
+            Client client,
+            Employee employee,
+            List<Rider> riders)
+        {
+            this.policyID = policyID;
+            this.termsCond = termsAndCond;
+            this.startDate = startDate;
+            this.maturedDate = maturedDate;
+            this.client = client;
+            this.employee = employee;
+            this.riders = riders;
+        }
 
         public int GetPolicyID()
         {
             return policyID;
-        }
-
-        public void SetPolicyID(int pd)
-        {
-            policyID = pd;
-        }
-
-        public List<string> GetTermsCond()
-        {
-            return termsCond;
-        }
-
-        public void SetTermsCond(List<string> termsCond)
-        {
-            this.termsCond = termsCond;
-        }
-    
-        public DateTime GetStartDate()
-        {
-            return startDate;
-        }
-
-        public void SetStartDate(DateTime startDate)
-        {
-            this.startDate = startDate;
-        }
-
-        public DateTime GetMaturityDate()
-        {
-            return maturityDate;
-        }
-
-        public void SetMaturityDate(DateTime maturityDate)
-        {
-            this.maturityDate = maturityDate;
-        }
-
-        public double GetTotalAmount()
-        {
-            return totalAmount;
-        }
-
-        public void SetTotalAmount(double totalAmount)
-        {
-            this.totalAmount = totalAmount;
         }
 
         public double GetFee()
@@ -86,10 +59,37 @@ namespace ProvidentLife.Classes
             return fee;
         }
 
-        public void SetFee(double fee)
+        public List<string> GetTermsCond()
         {
-            this.fee = fee;
+            return termsCond;
         }
+
+        public DateTime GetStartDate()
+        {
+            return startDate;
+        }
+
+        public DateTime GetMaturedDate()
+        {
+            return maturedDate;
+        }
+
+        public double GetTotalPenalty()
+        {
+            return totalPenalty;
+        }
+
+        public void SetTotalPenalty(double penalty)
+        {
+            this.totalPenalty = penalty;
+        }
+
+        public void PayFee()
+        {
+            Console.WriteLine("Paid fee of $" + fee);
+        }
+
+        public abstract Premium GetPremium();
 
         // Strategy pattern
         public Payout PerformPayOut(string severity)

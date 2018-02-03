@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class Observer
+    class SeniorPayStrategy
     {
-        
+        public Employee calculatePay()
+        {
+            return null; //implementation
+        }
     }
 }

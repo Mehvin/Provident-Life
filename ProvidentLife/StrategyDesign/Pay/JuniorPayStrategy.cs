@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class CarPayoutStrategy : PayoutStrategy
+    class JuniorPayStrategy
     {
-        public Payout PayOut(string severity)
+        public Employee calculatePay()
         {
-            return null; //check payout return
+            return null; //implementation
         }
     }
 }

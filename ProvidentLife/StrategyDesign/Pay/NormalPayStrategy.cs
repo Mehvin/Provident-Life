@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    interface Subject
+    class NormalPayStrategy
     {
+        public Employee calculatePay()
+        {
+            return null; //implementation
+        }
     }
 }

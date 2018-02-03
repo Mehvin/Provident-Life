@@ -42,29 +42,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StrategyDesign\CarPayoutStrategy.cs" />
+    <Compile Include="BuilderDesign\IPBuilder.cs" />
+    <Compile Include="BuilderDesign\OneTimeIPBuilder.cs" />
+    <Compile Include="BuilderDesign\PeriodicIPBuilder.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientPayouts.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="StateDesign\InactiveIPState.cs" />
     <Compile Include="InsurancePolicy.cs" />
-    <Compile Include="Invoice.cs" />
     <Compile Include="StateDesign\IPState.cs" />
     <Compile Include="IteratorDesign\Iterator.cs" />
     <Compile Include="StateDesign\LapsedIPState.cs" />
-    <Compile Include="StrategyDesign\MedicalPayoutStrategy.cs" />
-    <Compile Include="ObserverDesign\Observer.cs" />
     <Compile Include="OneTimeInsurancePolicy.cs" />
     <Compile Include="StateDesign\OngoingIPState.cs" />
     <Compile Include="Payout.cs" />
-    <Compile Include="StrategyDesign\PayoutStrategy.cs" />
+    <Compile Include="StrategyDesign\PayOut\LumpSumPayoutStrategy.cs" />
+    <Compile Include="StrategyDesign\PayOut\PayoutStrategy.cs" />
     <Compile Include="PeriodicInsurancePolicy.cs" />
     <Compile Include="Premium.cs" />
-    <Compile Include="ObserverDesign\Subject.cs" />
-    <Compile Include="StrategyDesign\TravelPayoutStrategy.cs" />
+    <Compile Include="StrategyDesign\Pay\JuniorPayStrategy.cs" />
+    <Compile Include="StrategyDesign\Pay\NormalPayStrategy.cs" />
+    <Compile Include="StrategyDesign\Pay\PayStrategy.cs" />
+    <Compile Include="StrategyDesign\PayOut\PercentagePayoutStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rider.cs" />
+    <Compile Include="StrategyDesign\Pay\SeniorPayStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
