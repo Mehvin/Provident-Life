@@ -70,7 +70,6 @@ namespace ProvidentLife
 -----Staff Tasks-----
 [1] Create New Policy
 [2] View Policy 
-[3] Edit Policy
 [0] Exit"); // if user = admin show all , if user != admin show their own policies only
                 Console.Write("Enter option: ");
                 int option = Convert.ToInt32(Console.ReadLine());
