@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuilderDesign\IPBuilder.cs" />
+    <Compile Include="BuilderDesign\OneTimeIPBuilder.cs" />
+    <Compile Include="BuilderDesign\PeriodicIPBuilder.cs" />
     <Compile Include="StrategyDesign\CarPayoutStrategy.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientPayouts.cs" />
