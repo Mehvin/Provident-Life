@@ -4,58 +4,113 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class Employee
     {
         private int agentID;
-        private string Name;
-        private int policiesSold;
-        private double commissionPercent;
+        private string name;
+        private int policiesSold = 0;
+        private double commissionPercent = 0;
         private string agentRank;
-        private bool isAdmins;
+        private bool isAdmin;
 
         public static string SENIOR_RANK = "SENIOR";
         public static string JUNIOR_RANK = "JUNIOR";
         public static string NORMAL_RANK = "NORMAL";
 
-        //Associations
-        private List<InsurancePolicy> insurancePolicyList;
+        // Strategy pattern
+        private PayStrategy payStrategy;
 
-        public Employee(int agentID, string name, string agentRank, bool isAdmin, List<InsurancePolicy> iP)
+        // Associations
+        private IPCollection ipCollection;
+
+        public Employee(int agentID, string name, string agentRank, bool isAdmin, PayStrategy payStrategy)
         {
             this.agentID = agentID;
-            this.Name = name;
-            this.policiesSold = 0;
-            this.commissionPercent = 0;
+            this.name = name;
             this.agentRank = agentRank;
-            this.isAdmins = isAdmin;
-            this.insurancePolicyList = iP;
+            this.isAdmin = isAdmin;
+            this.payStrategy = payStrategy;
+            this.ipCollection = new IPCollection();
         }
 
-        public double CalculatePay()
+        public double performCalculatePay()
         {
-            return 0.0 ; //implementation
+            // implementation
+            Console.WriteLine("Calculating pay!");
+
+            return payStrategy.calculatePay();
+        }
+        
+        public int getAgentID()
+        {
+            return agentID;
         }
 
-        public string GetRank()
+        public string getName()
+        {
+            return name;
+        }
+
+        public int getPoliciesSold()
+        {
+            return policiesSold;
+        }
+
+        public void setPoliciesSold(int policiesSold)
+        {
+            this.policiesSold = policiesSold;
+        }
+
+        public double getCommissionPercent()
+        {
+            return commissionPercent;
+        }
+
+        public void setCommissionPercent(double commissionPercent)
+        {
+            this.commissionPercent = commissionPercent;
+        }
+
+        public string getAgentRank()
         {
             return agentRank;
         }
 
-        public void SetRank(string rank)
+        public void setAgentRank(string agentRank)
         {
-            agentRank = rank;
+            this.agentRank = agentRank;
         }
 
-        public bool isAdmin()
+        public bool getIsAdmin()
         {
-            return isAdmins;
+            return isAdmin;
         }
 
         public void setIsAdmin(bool isAdmin)
         {
-            this.isAdmins = isAdmin;
+            this.isAdmin = isAdmin;
+        }
+
+        public PayStrategy getPayStrategy()
+        {
+            return payStrategy;
+        }
+
+        public void setPayStrategy(PayStrategy payStrategy)
+        {
+            this.payStrategy = payStrategy;
+        }
+
+        public void addPolicy(InsurancePolicy policy)
+        {
+            ipCollection.addPolicy(policy);
+        }
+
+        public void removePolicy(InsurancePolicy policy)
+        {
+            ipCollection.removePolicy(policy);
         }
     }
 }

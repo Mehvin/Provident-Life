@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     abstract class IPBuilder
     {
@@ -15,48 +15,48 @@ namespace ProvidentLife.Classes
         protected List<string> termsAndConds;
         protected List<Rider> riders;
 
-        public IPBuilder WithClient(Client client)
+        public IPBuilder withClient(Client client)
         {
             this.client = client;
 
             return this;
         }
 
-        public IPBuilder WithEmployee(Employee employee)
+        public IPBuilder withEmployee(Employee employee)
         {
             this.employee = employee;
 
             return this;
         }
 
-        public IPBuilder StartsOn(DateTime startDate)
+        public IPBuilder startsOn(DateTime startDate)
         {
             this.startDate = startDate;
 
             return this;
         }
 
-        public IPBuilder MaturesOn(DateTime maturedDate)
+        public IPBuilder maturesOn(DateTime maturedDate)
         {
             this.maturedDate = maturedDate;
 
             return this;
         }
 
-        public IPBuilder AddsTermsAndCond(string termsAndCond)
+        public IPBuilder addsTermsAndCond(string termsAndCond)
         {
             this.termsAndConds.Add(termsAndCond);
 
             return this;
         }
 
-        public IPBuilder AddRider(Rider rider)
+        public IPBuilder addRider(Rider rider)
         {
             this.riders.Add(rider);
 
             return this;
         }
 
-        abstract public InsurancePolicy Build();
+        abstract public InsurancePolicy build();
     }
 }

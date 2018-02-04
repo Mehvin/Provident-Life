@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class OneTimeInsurancePolicy : InsurancePolicy
     {
         public OneTimeInsurancePolicy(
-            int policyID,
             List<string> termsAndCond,
             DateTime startDate,
             DateTime maturedDate,
             Client client,
             Employee employee,
-            List<Rider> riders) : base(policyID, termsAndCond, startDate, maturedDate, client, employee, riders)
+            List<Rider> riders) : base(termsAndCond, startDate, maturedDate, client, employee, riders)
         {
         }
 
-        public override Premium GetPremium()
+        public override Premium getPremium()
         {
             // return a single premium
             throw new NotImplementedException();

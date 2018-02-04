@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     interface Iterator
     {
-        Object Next();
-        bool HasNext();
-        void Remove();
+        Object next();
+        bool hasNext();
+        void remove(object obj);
     }
 }

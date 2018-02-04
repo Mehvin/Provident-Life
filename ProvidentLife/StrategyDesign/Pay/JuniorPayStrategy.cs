@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class JuniorPayStrategy : PayStrategy
     {
-        public Employee CalculatePay()
+        public double calculatePay()
         {
             throw new NotImplementedException();
         }

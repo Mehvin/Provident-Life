@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     interface PayoutStrategy
     {
-        Rider performPayOut(string severity);
+        double performPayOut(string severity);
     }
 }

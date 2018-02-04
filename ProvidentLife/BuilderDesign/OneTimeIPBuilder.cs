@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class OneTimeIPBuilder : IPBuilder
     {
-        public override InsurancePolicy Build()
+        public override InsurancePolicy build()
         {
             return new OneTimeInsurancePolicy(
-                0,
                 termsAndConds,
                 startDate,
                 maturedDate,

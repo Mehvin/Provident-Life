@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     interface PayStrategy
     {
-        Employee CalculatePay ();
+        double calculatePay();
     }
 }

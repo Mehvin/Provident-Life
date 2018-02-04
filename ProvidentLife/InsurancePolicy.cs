@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProvidentLife.Classes;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     abstract class InsurancePolicy
     {
+        private static int ID = 0;
+
         // Properties
         protected int policyID;
         protected List<string> termsCond;
@@ -18,13 +19,10 @@ namespace ProvidentLife.Classes
         protected double fee = 0;
         protected double totalPenalty = 0;
 
-        //Associations
+        // Associations
         private Client client;
         private Employee employee;
         private List<Rider> riders;
-
-        // Strategy pattern
-        protected PayoutStrategy payoutStrategy;
 
         // State machine
         private IPState ongoingIPState;
@@ -33,7 +31,6 @@ namespace ProvidentLife.Classes
         private IPState state;
 
         public InsurancePolicy(
-            int policyID,
             List<string> termsAndCond,
             DateTime startDate,
             DateTime maturedDate,
@@ -41,7 +38,7 @@ namespace ProvidentLife.Classes
             Employee employee,
             List<Rider> riders)
         {
-            this.policyID = policyID;
+            this.policyID = ID++;
             this.termsCond = termsAndCond;
             this.startDate = startDate;
             this.maturedDate = maturedDate;
@@ -50,64 +47,58 @@ namespace ProvidentLife.Classes
             this.riders = riders;
         }
 
-        public int GetPolicyID()
+        public int getPolicyID()
         {
             return policyID;
         }
 
-        public List<string> GetTermsCond()
+        public List<string> getTermsCond()
         {
             return termsCond;
         }
 
-        public double GetTotalPenalty()
+        public double getTotalPenalty()
         {
             return totalPenalty;
         }
 
-        public void SetTotalPenalty(double penalty)
+        public void setTotalPenalty(double penalty)
         {
             this.totalPenalty = penalty;
         }
 
-        public void PayFee()
+        public void payFee()
         {
             Console.WriteLine("Paid fee of $" + fee);
         }
 
-        public abstract Premium GetPremium();
+        public abstract Premium getPremium();
 
         // Strategy pattern
-        public Rider PerformPayOut(string severity)
+        public double performPayOut(Rider rider, string severity)
         {
-            Rider payout = this.payoutStrategy.performPayOut(severity);
-
-            if (payout != null)
-            {
-                //update state machine?
-                
-            }
+            double payout = rider.performPayOut(severity);
 
             return payout;
         }
 
         // State machine
-        public IPState GetOngoingIPState()
+        public IPState getOngoingIPState()
         {
             return ongoingIPState;
         }
 
-        public IPState GetLapsedIPState()
+        public IPState getLapsedIPState()
         {
             return lapsedIPState;
         }
 
-        public IPState GetInactiveIPState()
+        public IPState getInactiveIPState()
         {
             return inactiveIPState;
         }
 
-        public void SetIPState(IPState state)
+        public void setIPState(IPState state)
         {
             this.state = state;
         }

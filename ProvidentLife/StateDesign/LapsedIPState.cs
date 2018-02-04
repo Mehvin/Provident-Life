@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class LapsedIPState : IPState
     {
@@ -15,40 +15,40 @@ namespace ProvidentLife.Classes
             myPolicy = policy;
         }
 
-        public void PayPeriodic()
+        public void payPeriodic()
         {
             Console.WriteLine("Policy cannot be paid periodically now!");
         }
 
-        public void AgentCancelPolicy()
+        public void agentCancelPolicy()
         {
-            myPolicy.SetIPState(myPolicy.GetInactiveIPState());
+            myPolicy.setIPState(myPolicy.getInactiveIPState());
             Console.WriteLine("Policy has been cancelled by agent.");
         }
 
-        public void AgentLapsedPolicy()
+        public void agentLapsedPolicy()
         {
             Console.WriteLine("Policy is already lapsed!");
         }
 
-        public void ClientCancelPolicy()
+        public void clientCancelPolicy()
         {
-            myPolicy.PayFee();
-            myPolicy.SetIPState(myPolicy.GetInactiveIPState());
+            myPolicy.payFee();
+            myPolicy.setIPState(myPolicy.getInactiveIPState());
             Console.WriteLine("Policy has been cancelled by client.");
         }
 
-        public void Payout()
+        public void payout()
         {
             Console.WriteLine("Policy cannot perform payout, please pay penalty first!");
         }
 
-        public void PayPenalty(double amount)
+        public void payPenalty(double amount)
         {
-            myPolicy.SetTotalPenalty(myPolicy.GetTotalPenalty() - amount);
-            if (myPolicy.GetTotalPenalty() == 0)
+            myPolicy.setTotalPenalty(myPolicy.getTotalPenalty() - amount);
+            if (myPolicy.getTotalPenalty() == 0)
             {
-                myPolicy.SetIPState(myPolicy.GetOngoingIPState());
+                myPolicy.setIPState(myPolicy.getOngoingIPState());
                 Console.WriteLine("Penalty paid out, policy returned to ongoing.");
             }
 

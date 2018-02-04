@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class PeriodicIPBuilder : IPBuilder
     {
@@ -17,10 +17,9 @@ namespace ProvidentLife.Classes
             return this;
         }
 
-        public override InsurancePolicy Build()
+        public override InsurancePolicy build()
         {
             return new PeriodicInsurancePolicy(
-                0,
                 termsAndConds,
                 startDate,
                 maturedDate,

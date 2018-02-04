@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class SeniorPayStrategy : PayStrategy
     {
-        public Employee CalculatePay()
+        public double calculatePay()
         {
-            return null; //implementation
+            return 0; //implementation
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProvidentLife.Classes;
 
 namespace ProvidentLife
 {
@@ -16,19 +15,17 @@ namespace ProvidentLife
         private List<string> termsAndConds;
         private double totalAmountPayable;
 
-        //Associations
-        private InsurancePolicy insurancePolicy;
-        private List<Premium> premiumList;
+        // Strategy
+        private PayoutStrategy payoutStrategy;
 
-        public Rider(int riderID, string policyType, string description, double payOutAmount, double totalamountpayable, InsurancePolicy ip, List<Premium> pL)
+        public Rider(int riderID, string policyType, string description, double payOutAmount, double totalAmountPayable, PayoutStrategy payoutStrategy)
         {
-            this.riderID = riderID;
-            this.policyType = policyType;
-            this.description = description;
-            this.payOutAmount = payOutAmount;
-            this.totalAmountPayable = totalamountpayable;
-            this.insurancePolicy = ip;
-            this.premiumList = pL;
+            this.riderID            = riderID;
+            this.policyType         = policyType;
+            this.description        = description;
+            this.payOutAmount       = payOutAmount;
+            this.totalAmountPayable = totalAmountPayable;
+            this.payoutStrategy     = payoutStrategy;
         }
 
         public int getRiderID()
@@ -56,10 +53,11 @@ namespace ProvidentLife
             return totalAmountPayable;
         }
 
-        public Rider performPayOut()
+        // Strategy pattern.
+        public double performPayOut(string severity)
         {
             //implementation
-            return this;
+            return payoutStrategy.performPayOut(severity);
         }
     }
 }

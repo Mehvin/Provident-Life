@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class Premium
     {
+        private static int ID = 0;
+
         private int premiumID;
         private double amountPayable;
         private DateTime dueDate;
@@ -15,28 +17,50 @@ namespace ProvidentLife.Classes
         private DateTime dateTimeOfPayment;
         private string details;
         
-        //Associations
+        // Associations
         private Rider rider;
         private Client client;
 
-        public Premium(int id, double amountPayable, DateTime dueDate, Rider rider, Client client, string paymentType,DateTime datetimeofpayment, string details)
+        public Premium(double amountPayable, DateTime dueDate, Rider rider, Client client, string paymentType, DateTime dateTimeOfPayment, string details)
         {
-            this.premiumID = id;
+            this.premiumID = ID++;
             this.amountPayable = amountPayable;
             this.dueDate = dueDate;
+            this.paymentType = paymentType;
+            this.dateTimeOfPayment = dateTimeOfPayment;
+            this.details = details;
             this.rider = rider;
             this.client = client;
-            this.paymentType = paymentType;
-            this.dateTimeOfPayment = datetimeofpayment;
-            this.details = details;
         }
 
-        public int getpremiumID() { return premiumID; }
-        public double getAmountPayable() { return amountPayable; }
-        public DateTime getDueDate() { return dueDate; }
-        public string getPaymentType() { return paymentType; }
-        public DateTime getDateTimeOfPayment() { return dateTimeOfPayment; }
-        public string getDetails() { return details; }
+        public int getPremiumID()
+        {
+            return premiumID;
+        }
 
+        public double getAmountPayable()
+        {
+            return amountPayable;
+        }
+
+        public DateTime getDueDate()
+        {
+            return dueDate;
+        }
+
+        public string getPaymentType()
+        {
+            return paymentType;
+        }
+
+        public DateTime getDateTimeOfPayment()
+        {
+            return dateTimeOfPayment;
+        }
+
+        public string getDetails()
+        {
+            return details;
+        }
     }
 }

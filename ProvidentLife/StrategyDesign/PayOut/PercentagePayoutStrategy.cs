@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class PercentagePayoutStrategy : PayoutStrategy
     {
-        public Rider performPayOut(string severity)
+        public double performPayOut(string severity)
         {
-            return null; //check payout return
+            return 0; //check payout return
         }
     }
 }

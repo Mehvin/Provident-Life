@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     class OngoingIPState : IPState
     {
@@ -15,38 +15,39 @@ namespace ProvidentLife.Classes
             myPolicy = policy;
         }
 
-        public void PayPeriodic()
+        public void payPeriodic()
         {
             Console.WriteLine("Periodic paid.");
         }
 
-        public void AgentCancelPolicy()
+        public void agentCancelPolicy()
         {
             Console.WriteLine("Policy can't be cancelled by agent!");
         }
 
-        public void AgentLapsedPolicy()
+        public void agentLapsedPolicy()
         {
-            myPolicy.SetIPState(myPolicy.GetLapsedIPState());
+            myPolicy.setIPState(myPolicy.getLapsedIPState());
             Console.WriteLine("Policy has been lapsed by agent!");
         }
 
-        public void ClientCancelPolicy()
+        public void clientCancelPolicy()
         {
-            myPolicy.PayFee();
-            myPolicy.SetIPState(myPolicy.GetInactiveIPState());
+            myPolicy.payFee();
+            myPolicy.setIPState(myPolicy.getInactiveIPState());
             Console.WriteLine("Policy has been cancelled by client.");
         }
 
-        public void Payout()
+        public void payout()
         {
             string serverity = "Insert serverity here";
-            myPolicy.PerformPayOut(serverity);
-            myPolicy.SetIPState(myPolicy.GetInactiveIPState());
+            Rider rider = null;
+            myPolicy.performPayOut(rider, serverity);
+            myPolicy.setIPState(myPolicy.getInactiveIPState());
             Console.WriteLine("Policy has been payout");
         }
 
-        public void PayPenalty(double amount)
+        public void payPenalty(double amount)
         {
             Console.WriteLine("No penalty to be paid!");
         }

@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvidentLife.Classes
+namespace ProvidentLife
 {
     interface IPState
     {
-        void PayPeriodic();
-        void AgentCancelPolicy();
-        void AgentLapsedPolicy();
-        void ClientCancelPolicy();
-        void Payout();
-        void PayPenalty(double amount);
+        void payPeriodic();
+        void agentCancelPolicy();
+        void agentLapsedPolicy();
+        void clientCancelPolicy();
+        void payout();
+        void payPenalty(double amount);
     }
 }
