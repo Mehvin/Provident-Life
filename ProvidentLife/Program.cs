@@ -250,11 +250,80 @@ namespace ProvidentLife
             Console.WriteLine("2. Edit Policy");
         }
 
-        static void editPolicy()
+        static void editPolicy(InsurancePolicy policy)
         {
+            List<Rider> policyRiders = policy.getRiderList();
+            int riderNo = policyRiders.GetRange() + 1;
+            Console.Write("Add Rider?[Y/N]: ");
+            string option = Console.ReadLine();
+            while (option == "Y")
+            {
+                Console.Write("\nEnter in policy description: ");
+                string desc = Console.ReadLine();
 
+                Console.Write("\nEnter policy type: ");
+                string policyType = Console.ReadLine();
+
+                Console.Write("\nEnter payout amount: $");
+                double payOut = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("\nEnter total amount: $");
+                double totalAmt = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("\nConfirm Add Rider?[Y/N]: ");
+                string addRider = Console.ReadLine();
+
+                if(addRider == "Y")
+                {
+                    Rider rider = new Rider(riderNo, desc, policyType, payOut, totalAmt, new PercentagePayoutStrategy());
+                    policyRiders.Add(rider);
+                    riderNo++;
+                    Console.WriteLine("Rider Updated!");
+                    Console.Write("\nAdd more riders?[Y/N]: ");
+                    option = Console.ReadLine();
+                }
+                else if(addRider == "N")
+                {
+                    continue;
+                }
+            }
+            if (option == "N")
+            {
+                Console.Write("Pay Premium by Cheque?[Y/N]: ");
+                string ppbc = Console.ReadLine();
+                while (ppbc == "Y")
+                {
+                    if (policyRiders[0].getTotalAmountPayable() == 0)
+                    {
+                        Console.Write("No outstanding premium");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Total amount payable = $" + policyRiders[0].getTotalAmountPayable());
+                        Console.Write("Enter Cheque No.: ");
+                        string cheque = Console.ReadLine();
+                        Console.Write("Enter bank acc No.: ");
+                        string bank = Console.ReadLine();
+                        Console.Write("\nConfirm Payment?[Y/N]: ");
+                        string payByCheque = Console.ReadLine();
+
+                        if (payByCheque == "Y")
+                        {
+                            //Store cheque details
+                            //Total amount payable =0
+                            Console.WriteLine("Cheque Stored!");
+                            break;
+                        }
+                        else if (payByCheque == "N")
+                        {
+                            continue;
+                        }
+                    }
+                }
+                Console.WriteLine("Policy Updated!");
+            }
         }
-
         static void generateAlerts()
         {
 
