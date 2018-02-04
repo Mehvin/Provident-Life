@@ -176,10 +176,11 @@ namespace ProvidentLife
             Console.Write("\nSelect premium type (1-One Time | 2-Periodic): ");
             int premiumType = Convert.ToInt32(Console.ReadLine());
 
+            int noOfDays = 0; //placeholder
             if (premiumType == 2)
             {
                 Console.Write("Number of days per period: ");
-                int noOfDays = Convert.ToInt32(Console.ReadLine());
+                noOfDays = Convert.ToInt32(Console.ReadLine());
             }
 
             Console.Write("\nEnter maturity date: ");
@@ -219,9 +220,22 @@ namespace ProvidentLife
 
             if (confirm == 1)
             {
-                InsurancePolicy policy = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
-                pList.Add(policy);
-                Console.WriteLine("Policy created!\n");
+                if (premiumType == 1) //one-time
+                {
+                    InsurancePolicy policy1 = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
+                    pList.Add(policy1);
+                    Console.WriteLine("Policy created!\n");
+                }
+                else if (premiumType == 2) //perodic
+                {
+                    InsurancePolicy policy2 = new PeriodicInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList, noOfDays);
+                    pList.Add(policy2);
+                    Console.WriteLine("Policy created!\n");
+                }
+            }
+            else if (confirm == 2)
+            {
+                Console.WriteLine("Policy NOT created!\n");
             }
         }
 
