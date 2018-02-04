@@ -21,7 +21,7 @@ namespace ProvidentLife
             string user;
             Client loggedInClient; //this is the client that logged in
             Employee loggedInEmployee; //this is the employee that logged in
-             
+
             Console.WriteLine("----Provident Life System----");
             Console.Write("Username: ");
             user = Console.ReadLine();
@@ -93,7 +93,7 @@ namespace ProvidentLife
 
             InsurancePolicy p1 = new OneTimeInsurancePolicy(baseTnC, startDateTime, maturedDateTime, cList[0], eList[0], riderList);
 
-            pList.Add(p1);            
+            pList.Add(p1);
         }
 
         static void customerSystem(Client client)
@@ -135,7 +135,7 @@ namespace ProvidentLife
                 int no = 1;
                 while (ipIterator.hasNext())
                 {
-                    InsurancePolicy policy = (InsurancePolicy) ipIterator.next();
+                    InsurancePolicy policy = (InsurancePolicy)ipIterator.next();
 
                     // Print out policy details inline.
                     Console.WriteLine("#" + no++);
@@ -370,11 +370,11 @@ namespace ProvidentLife
             List<string> TnC = new List<string>();
             int moreRiders = 1;
             int riderNo = 0;
-            
+
             Console.WriteLine("\n-----List of clients-----");
             for (int i = 0; i < cList.Count; i++)
             {
-                Console.WriteLine("["+cList[i].getClientID() +"]"+ cList[i].getName());
+                Console.WriteLine("[" + cList[i].getClientID() + "]" + cList[i].getName());
             }
 
             Console.Write("Select a client: ");
@@ -393,7 +393,7 @@ namespace ProvidentLife
             Console.Write("\nEnter maturity date: ");
             DateTime maturityDate = Convert.ToDateTime(Console.ReadLine());
             DateTime startDate = DateTime.Now;
-            
+
             while (moreRiders == 1)
             {
                 Console.Write("\nEnter in policy description: ");
@@ -494,7 +494,7 @@ namespace ProvidentLife
                 Console.Write("\nConfirm Add Rider?[Y/N]: ");
                 string addRider = Console.ReadLine();
 
-                if(addRider == "Y")
+                if (addRider == "Y")
                 {
                     Rider rider = new Rider(riderNo, desc, policyType, payOut, totalAmt, new PercentagePayoutStrategy());
                     policyRiders.Add(rider);
@@ -503,7 +503,7 @@ namespace ProvidentLife
                     Console.Write("\nAdd more riders?[Y/N]: ");
                     option = Console.ReadLine();
                 }
-                else if(addRider == "N")
+                else if (addRider == "N")
                 {
                     continue;
                 }
@@ -545,9 +545,49 @@ namespace ProvidentLife
                 Console.WriteLine("Policy Updated!");
             }
         }
-        static void generateAlerts()
-        {
 
+        static void generateAlerts(List<InsurancePolicy> policy)
+        {
+            List<Premium> p;
+            List<int> options = new List<int>();
+            bool preNum = false;
+
+            foreach (InsurancePolicy item in policy)
+            {
+                p = item.getPremiums();
+
+                foreach (Premium premium in p)
+                {
+                    if (premium.getDueDate() > DateTime.Today)
+                    {
+                        Console.WriteLine(premium.getPremiumID());
+                    }
+                    //getPremiums and check if its due. If due console print due
+                }
+            }
+
+            while (preNum)
+            {
+                Console.Write("Enter premium's number to send letter: ");
+                options.Add(Convert.ToInt32(Console.ReadLine()));
+                Console.Write("Is there anymore premium to select? ");
+                if (Console.ReadLine() == "no") preNum = true;
+            }
+
+            Console.WriteLine("AUTO GENERATED EMAIL");
+            Console.WriteLine("Your premium is due for payment");
+
+            Console.WriteLine("Confirm send?");
+            Console.ReadLine();
+
+            Console.WriteLine("AUTO GENERATED LETTER");
+            Console.WriteLine("Your premium is due for payment");
+
+            Console.WriteLine("Confirm send?");
+            Console.ReadLine();
+
+            Console.WriteLine("Press enter to return");
+            Console.ReadKey();
         }
     }
 }
