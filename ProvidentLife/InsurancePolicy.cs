@@ -102,5 +102,10 @@ namespace ProvidentLife
         {
             this.state = state;
         }
+
+        public List<Rider> getRiders()
+        {
+            return riders;
+        }
     }
 }

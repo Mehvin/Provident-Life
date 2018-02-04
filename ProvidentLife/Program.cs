@@ -98,7 +98,7 @@ namespace ProvidentLife
 
         static void customerSystem(Client client)
         {
-            Console.WriteLine("Welcome back Customer, " + client.getName() + "\n");
+            Console.WriteLine("Welcome back customer, " + client.getName() + "\n");
 
             bool programrun = true;
 
@@ -132,15 +132,19 @@ namespace ProvidentLife
 
                 // Iterate through the policies.
                 Iterator ipIterator = ipCollection.getIterator();
+                int no = 1;
                 while (ipIterator.hasNext())
                 {
-                    InsurancePolicy policy = (InsurancePolicy)ipIterator.next();
+                    InsurancePolicy policy = (InsurancePolicy) ipIterator.next();
 
                     // Print out policy details inline.
+                    Console.WriteLine("#" + no++);
+                    Console.WriteLine("ID: " + policy.getPolicyID());
+                    Console.WriteLine();
                 }
 
                 // Get user option.
-                Console.WriteLine("\n\n[1] View a policy\n[] Return home");
+                Console.WriteLine("\n\n[1] View a policy\n[0] Return home");
 
                 Console.Write("Enter option: ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -178,7 +182,25 @@ namespace ProvidentLife
             while (isRunning)
             {
                 // Display policy details.
-                Console.WriteLine("Displaying policy details!");
+                Console.WriteLine("ID: " + policy.getPolicyID());
+
+                Console.WriteLine("Terms & Conditions: ");
+                int tAndCNo = 1;
+                foreach (string tAndC in policy.getTermsCond())
+                {
+                    Console.WriteLine("#" + (tAndCNo++) + tAndC);
+                }
+
+                Console.WriteLine("Riders: ");
+                int riderNo = 1;
+                foreach (Rider r in policy.getRiders())
+                {
+                    Console.WriteLine("#" + riderNo++);
+                    Console.WriteLine("Description: " + r.getDescription());
+                    Console.WriteLine("Total Amount payable: $" + r.getTotalAmountPayable());
+                    Console.WriteLine("Pay out amount: $" + r.getPayOutAmount());
+                    Console.WriteLine();
+                }
 
                 // Get outstanding premiums.
                 List<Premium> premiums = policy.getPremiums();
@@ -224,6 +246,7 @@ namespace ProvidentLife
             bool isRunning = true;
             while (isRunning)
             {
+                // If no premiums then return function.
                 if (premiums.Count == 0)
                 {
                     Console.WriteLine("No outstanding premiums!");
@@ -231,7 +254,17 @@ namespace ProvidentLife
                     break;
                 }
 
-                Console.WriteLine("Displaying a list of premiums!");
+                // Display premiums.
+                int no = 1;
+                foreach (Premium p in premiums)
+                {
+                    Console.WriteLine("#" + no++);
+                    Console.WriteLine("ID: " + p.getPremiumID());
+                    Console.WriteLine("Details: " + p.getDetails());
+                    Console.WriteLine("Due Date: " + p.getDueDate().ToString());
+                    Console.WriteLine("Amount Payable: $" + p.getAmountPayable().ToString(".00"));
+                    Console.WriteLine();
+                }
 
                 // Get chosen premium from user.
                 int premiumNo;
@@ -253,7 +286,6 @@ namespace ProvidentLife
                 // Retrieve premium.
                 Premium premium = premiums[premiumNo - 1];
 
-
                 // Get credit card info.
                 Console.Write("Enter credit card no: ");
                 int creditCardNo = Convert.ToInt32(Console.ReadLine());
@@ -266,6 +298,8 @@ namespace ProvidentLife
 
                 if (paymentSuccess)
                 {
+                    Console.WriteLine("Payment successful!");
+                    Console.WriteLine("Receipt no: " + premium.getPremiumID());
                     premium.setPaymentType("Credit Card");
                     premium.setDateTimeOfPayment(DateTime.Now);
                 }
