@@ -9,39 +9,33 @@ namespace ProvidentLife.Classes
     class Employee
     {
         private int agentID;
-        private string name;
+        private string Name;
         private int policiesSold;
         private double commissionPercent;
         private string agentRank;
-        private bool isAdmin;
+        private bool isAdmins;
 
         public static string SENIOR_RANK = "SENIOR";
         public static string JUNIOR_RANK = "JUNIOR";
         public static string NORMAL_RANK = "NORMAL";
 
-        public Employee(int agentID, string name, string agentRank, bool isAdmin)
+        //Associations
+        private List<InsurancePolicy> insurancePolicyList;
+
+        public Employee(int agentID, string name, string agentRank, bool isAdmin, List<InsurancePolicy> iP)
         {
             this.agentID = agentID;
-            this.name = name;
+            this.Name = name;
             this.policiesSold = 0;
             this.commissionPercent = 0;
             this.agentRank = agentRank;
-            this.isAdmin = isAdmin;
+            this.isAdmins = isAdmin;
+            this.insurancePolicyList = iP
         }
 
         public double CalculatePay()
         {
             return 0.0 ; //implementation
-        }
-
-        public int GetPoliciesSold()
-        {
-            return policiesSold;
-        }
-
-        public double GetCommissionPercent()
-        {
-            return commissionPercent;
         }
 
         public string GetRank()
@@ -54,14 +48,14 @@ namespace ProvidentLife.Classes
             agentRank = rank;
         }
 
-        public bool GetIsAdmin()
+        public bool isAdmin()
         {
-            return isAdmin;
+            return isAdmins;
         }
 
-        public void SetIsAdmin(bool isAdmin)
+        public void setIsAdmin(bool isAdmin)
         {
-            this.isAdmin = isAdmin;
+            this.isAdmins = isAdmin;
         }
     }
 }

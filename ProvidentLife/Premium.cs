@@ -8,38 +8,35 @@ namespace ProvidentLife.Classes
 {
     class Premium
     {
-        private int id;
+        private int premiumID;
         private double amountPayable;
         private DateTime dueDate;
+        private string paymentType;
+        private DateTime dateTimeOfPayment;
+        private string details;
+        
+        //Associations
+        private Rider rider;
+        private Client client;
 
-        private InsurancePolicy policy;
-
-        public Premium(int id, double amountPayable, DateTime dueDate, InsurancePolicy policy)
+        public Premium(int id, double amountPayable, DateTime dueDate, Rider rider, Client client, string paymentType,DateTime datetimeofpayment, string details)
         {
-            this.id = id;
+            this.premiumID = id;
             this.amountPayable = amountPayable;
             this.dueDate = dueDate;
-            this.policy = policy;
+            this.rider = rider;
+            this.client = client;
+            this.paymentType = paymentType;
+            this.dateTimeOfPayment = datetimeofpayment;
+            this.details = details;
         }
 
-        public int GetId()
-        {
-            return id;
-        }
+        public int getpremiumID() { return premiumID; }
+        public double getAmountPayable() { return amountPayable; }
+        public DateTime getDueDate() { return dueDate; }
+        public string getPaymentType() { return paymentType; }
+        public DateTime getDateTimeOfPayment() { return dateTimeOfPayment; }
+        public string getDetails() { return details; }
 
-        public double GetAmountPayable()
-        {
-            return amountPayable;
-        }
-
-        public DateTime GetDueDate()
-        {
-            return dueDate;
-        }
-
-        public InsurancePolicy GetInsurancePolicy()
-        {
-            return policy;
-        }
     }
 }

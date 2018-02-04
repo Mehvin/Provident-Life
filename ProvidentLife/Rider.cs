@@ -10,30 +10,51 @@ namespace ProvidentLife
     class Rider
     {
         private int riderID;
-        private string name;
+        private string policyType;
+        private string description;
+        private double payOutAmount;
+        private List<string> termsAndConds;
+        private double totalAmountPayable;
 
-        private Client client;
+        //Associations
+        private InsurancePolicy insurancePolicy;
+        private List<Premium> premiumList;
 
-        public Rider(int riderID, string name, Client client)
+        public Rider(int riderID, string policyType, string description, double payOutAmount, double totalamountpayable, InsurancePolicy ip, List<Premium> pL)
         {
             this.riderID = riderID;
-            this.name = name;
-            this.client = client;
+            this.policyType = policyType;
+            this.description = description;
+            this.payOutAmount = payOutAmount;
+            this.totalAmountPayable = totalamountpayable;
+            this.insurancePolicy = ip;
+            this.premiumList = pL;
         }
 
-        public int GetRiderID()
+        public int getRiderID()
         {
             return riderID;
         }
 
-        public string GetName()
+        public string getDescription()
         {
-            return name;
+            return description;
         }
 
-        public Client GetClient()
+        public double getPayOutAmount()
         {
-            return client;
+            return payOutAmount;
         }
+
+        public List<string> getTermsCond()
+        {
+            return termsAndConds;
+        }
+
+        public double getTotalAmountPayable()
+        {
+            return totalAmountPayable;
+        }
+
     }
 }

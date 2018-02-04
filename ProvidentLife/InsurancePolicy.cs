@@ -15,12 +15,13 @@ namespace ProvidentLife.Classes
         protected DateTime startDate;
         protected DateTime maturedDate;
         protected double totalAmount;
-        protected double fee;
-        protected double totalPenalty;
+        protected double fee = 0;
+        protected double totalPenalty = 0;
 
-        protected Client client;
-        protected Employee employee;
-        protected List<Rider> riders;
+        //Associations
+        private Client client;
+        private Employee employee;
+        private List<Rider> riders;
 
         // Strategy pattern
         protected PayoutStrategy payoutStrategy;
@@ -54,24 +55,9 @@ namespace ProvidentLife.Classes
             return policyID;
         }
 
-        public double GetFee()
-        {
-            return fee;
-        }
-
         public List<string> GetTermsCond()
         {
             return termsCond;
-        }
-
-        public DateTime GetStartDate()
-        {
-            return startDate;
-        }
-
-        public DateTime GetMaturedDate()
-        {
-            return maturedDate;
         }
 
         public double GetTotalPenalty()

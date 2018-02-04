@@ -46,7 +46,6 @@
     <Compile Include="BuilderDesign\OneTimeIPBuilder.cs" />
     <Compile Include="BuilderDesign\PeriodicIPBuilder.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="ClientPayouts.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="StateDesign\InactiveIPState.cs" />
     <Compile Include="InsurancePolicy.cs" />
@@ -55,7 +54,6 @@
     <Compile Include="StateDesign\LapsedIPState.cs" />
     <Compile Include="OneTimeInsurancePolicy.cs" />
     <Compile Include="StateDesign\OngoingIPState.cs" />
-    <Compile Include="Payout.cs" />
     <Compile Include="StrategyDesign\PayOut\LumpSumPayoutStrategy.cs" />
     <Compile Include="StrategyDesign\PayOut\PayoutStrategy.cs" />
     <Compile Include="PeriodicInsurancePolicy.cs" />

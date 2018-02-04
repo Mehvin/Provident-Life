@@ -18,6 +18,7 @@ namespace ProvidentLife.Classes
             Client client,
             Employee employee,
             List<Rider> riders,
+
             int periodicDays) : base(policyID, termsAndCond, startDate, maturedDate, client, employee, riders)
         {
             this.periodicDays = periodicDays;
