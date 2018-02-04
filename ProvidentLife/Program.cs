@@ -427,17 +427,40 @@ namespace ProvidentLife
 
             if (confirm == 1)
             {
-                if (premiumType == 1) //one-time
+                if (premiumType == 1) //One-time
                 {
-                    InsurancePolicy policy1 = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
-                    pList.Add(policy1);
-                    Console.WriteLine("Policy created!\n");
+                    OneTimeIPBuilder policybuilder = new OneTimeIPBuilder();
+                    policybuilder.withClient(cList[0]);
+                    policybuilder.withEmployee(loggedInEmployee);
+                    policybuilder.startsOn(startDate);
+                    policybuilder.maturesOn(maturityDate);
+                    policybuilder.addsTermsAndCond(stringTnC);
+
+                    for (int i = 0; i < riderList.Count; i++)
+                    {
+                        policybuilder.addRider(riderList[i]);
+                    }
+
+                    pList.Add(policybuilder.build());
+                    Console.WriteLine("One-time policy created!\n");
                 }
-                else if (premiumType == 2) //perodic
+                else if (premiumType == 2) //Periodic
                 {
-                    InsurancePolicy policy2 = new PeriodicInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList, noOfDays);
-                    pList.Add(policy2);
-                    Console.WriteLine("Policy created!\n");
+                    PeriodicIPBuilder policybuilder = new PeriodicIPBuilder();
+                    policybuilder.withClient(cList[0]);
+                    policybuilder.withEmployee(loggedInEmployee);
+                    policybuilder.startsOn(startDate);
+                    policybuilder.maturesOn(maturityDate);
+                    policybuilder.addsTermsAndCond(stringTnC);
+                    policybuilder.SetPeriodicDays(noOfDays);
+
+                    for (int i = 0; i < riderList.Count; i++)
+                    {
+                        policybuilder.addRider(riderList[i]);
+                    }
+
+                    pList.Add(policybuilder.build());
+                    Console.WriteLine("Periodic policy created!\n");
                 }
             }
             else if (confirm == 2)
