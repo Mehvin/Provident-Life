@@ -8,7 +8,7 @@ namespace ProvidentLife.Classes
 {
     class LumpSumPayoutStrategy : PayoutStrategy
     {
-        public Payout PayOut(string severity)
+        public Rider performPayOut(string severity)
         {
             return null; //check payout return
         }

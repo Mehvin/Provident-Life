@@ -30,7 +30,7 @@ namespace ProvidentLife.Classes
             this.commissionPercent = 0;
             this.agentRank = agentRank;
             this.isAdmins = isAdmin;
-            this.insurancePolicyList = iP
+            this.insurancePolicyList = iP;
         }
 
         public double CalculatePay()

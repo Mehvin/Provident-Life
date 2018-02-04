@@ -8,6 +8,6 @@ namespace ProvidentLife.Classes
 {
     interface PayoutStrategy
     {
-        Payout PayOut(string severity);
+        Rider performPayOut(string severity);
     }
 }

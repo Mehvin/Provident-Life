@@ -78,9 +78,9 @@ namespace ProvidentLife.Classes
         public abstract Premium GetPremium();
 
         // Strategy pattern
-        public Payout PerformPayOut(string severity)
+        public Rider PerformPayOut(string severity)
         {
-            Payout payout = this.payoutStrategy.PayOut(severity);
+            Rider payout = this.payoutStrategy.performPayOut(severity);
 
             if (payout != null)
             {

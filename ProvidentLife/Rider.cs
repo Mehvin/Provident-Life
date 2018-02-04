@@ -56,5 +56,10 @@ namespace ProvidentLife
             return totalAmountPayable;
         }
 
+        public Rider performPayOut()
+        {
+            //implementation
+            return this;
+        }
     }
 }
