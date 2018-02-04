@@ -71,10 +71,6 @@ namespace ProvidentLife
         {
             Console.WriteLine("Paid fee of $" + fee);
         }
-        public List<Rider> getRiderList()
-        {
-            return riders;
-        }
 
         public abstract List<Premium> getPremiums();
 
