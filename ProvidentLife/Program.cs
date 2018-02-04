@@ -19,6 +19,7 @@ namespace ProvidentLife
             initialisePolicyList(policyList, employeeList, clientList);
 
             string user;
+            Employee loggedInEmployee; //this is the employee that login
              
             Console.WriteLine("----Provident Life System----");
             Console.Write("Username: ");
@@ -26,13 +27,21 @@ namespace ProvidentLife
             Console.WriteLine("");
 
             // check user type
-            if (user == "customer") // temporary way of checking of user
+            for (int i = 0; i < clientList.Count; i++)
             {
-                customerSystem(user);
+                if (clientList[i].getName() == user)
+                {
+                    customerSystem(user);
+                }
             }
-            else if (user == "staff") // temporary way of checking of user
+
+            for (int i = 0; i < employeeList.Count; i++)
             {
-                staffSystem(user, clientList);
+                if (employeeList[i].getName() == user)
+                {
+                    loggedInEmployee = employeeList[i];
+                    staffSystem(user, clientList, loggedInEmployee, policyList);
+                }
             }
         }
 
@@ -87,7 +96,7 @@ namespace ProvidentLife
 
         static void customerSystem(string user)
         {
-            Console.WriteLine("Welcome back Customer, " + user + "\n");
+            Console.WriteLine("Welcome back client, " + user + "\n");
             bool programrun = true;
 
             while (programrun)
@@ -116,24 +125,23 @@ namespace ProvidentLife
 
         }
 
-        static void staffSystem(string user, List<Client> cList)
+        static void staffSystem(string user, List<Client> cList, Employee loggedInEmployee, List<InsurancePolicy> pList)
         {
-            Console.WriteLine("Welcome back Staff, " + user + "\n");
+            Console.WriteLine("Welcome back employee, " + user + "\n");
             bool programrun = true;
 
             while (programrun)
             {
-                Console.WriteLine(@"
------Staff Tasks-----
-[1] Create New Policy
-[2] View Policy 
-[0] Exit"); // if user = admin show all , if user != admin show their own policies only
+                Console.WriteLine("-----Staff Tasks-----");
+                Console.WriteLine("[1] Create New Policy");
+                Console.WriteLine("[2] View Policy");
+                Console.WriteLine("[0] Exit"); // if user = admin show all , if user != admin show their own policies only
                 Console.Write("Enter option: ");
                 int option = Convert.ToInt32(Console.ReadLine());
 
                 if (option == 1) //Create new policy
                 {
-                    createPolicy(cList);
+                    createPolicy(cList, loggedInEmployee, pList);
                 }
                 else if (option == 2) //View policy
                 {
@@ -148,7 +156,7 @@ namespace ProvidentLife
             }
         }
 
-        static void createPolicy(List<Client> cList) //Done by Melvin
+        static void createPolicy(List<Client> cList, Employee loggedInEmployee, List<InsurancePolicy> pList) //Done by Melvin
         {
             List<Rider> riderList = new List<Rider>();
             List<string> TnC = new List<string>();
@@ -175,6 +183,7 @@ namespace ProvidentLife
 
             Console.Write("Enter maturity date: ");
             DateTime maturityDate = Convert.ToDateTime(Console.ReadLine());
+            DateTime startDate = DateTime.Now;
             
             while (moreRiders == 1)
             {
@@ -209,7 +218,8 @@ namespace ProvidentLife
 
             if (confirm == 1)
             {
-                // create new policy here
+                InsurancePolicy policy = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
+                pList.Add(policy);
                 Console.WriteLine("Policy created!");
             }
         }
