@@ -26,7 +26,7 @@ namespace ProvidentLife
             Console.Write("Username: ");
             user = Console.ReadLine();
             Console.WriteLine("");
-
+            
             // check user type
             for (int i = 0; i < clientList.Count; i++)
             {
@@ -552,19 +552,25 @@ namespace ProvidentLife
             List<int> options = new List<int>();
             bool preNum = false;
 
-            foreach (InsurancePolicy item in policy)
-            {
-                p = item.getPremiums();
+            // skeleton code 
+            //foreach (InsurancePolicy item in policy)
+            //{
+            //    p = item.getPremiums();
 
-                foreach (Premium premium in p)
-                {
-                    if (premium.getDueDate() > DateTime.Today)
-                    {
-                        Console.WriteLine(premium.getPremiumID());
-                    }
-                    //getPremiums and check if its due. If due console print due
-                }
-            }
+            //    foreach (Premium premium in p)
+            //    {
+            //        if (premium.getDueDate() > DateTime.Today)
+            //        {
+            //            Console.WriteLine(premium.getPremiumID());
+            //        }
+            //        //getPremiums and check if its due. If due console print due
+            //    }
+            //}
+
+            //for demo purposes
+            Console.WriteLine("ID           Due Date        Amount");
+            Console.WriteLine("01           11/11/2011        $20");
+
 
             while (preNum)
             {
