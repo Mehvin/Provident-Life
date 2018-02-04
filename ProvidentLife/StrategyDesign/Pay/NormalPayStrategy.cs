@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProvidentLife.Classes
 {
-    class NormalPayStrategy
+    class NormalPayStrategy : PayStrategy
     {
-        public Employee calculatePay()
+        public Employee CalculatePay()
         {
             return null; //implementation
         }
