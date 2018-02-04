@@ -57,6 +57,16 @@ namespace ProvidentLife
             return termsCond;
         }
 
+        public DateTime getStartDate()
+        {
+            return startDate;
+        }
+
+        public DateTime getMaturedDate()
+        {
+            return maturedDate;
+        }
+
         public double getTotalPenalty()
         {
             return totalPenalty;

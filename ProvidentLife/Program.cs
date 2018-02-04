@@ -352,10 +352,7 @@ namespace ProvidentLife
                 }
                 else if (option == 2) //View policy
                 {
-                    staffViewPolicy(pList);
-                    //Selects policy number
-                    //display policy menu
-                    //staffViewPolicy();
+                    // staffViewPolicy(pList);
                 }
                 else if (option == 0) //Exit
                 {
@@ -469,31 +466,68 @@ namespace ProvidentLife
             }
         }
 
-        static void staffViewPolicy(List<InsurancePolicy> pList)
+        static void staffViewPolicy(List<InsurancePolicy> pList, string user, InsurancePolicy insurancePolicy, Client client, Employee employee, IPCollection ipCollection)
         {
             for (int i = 0; i < pList.Count; i++)
             {
                 Console.WriteLine(pList[i].getPolicyID());
             }
-
             //check if user is admin
+            if (employee.getIsAdmin() == true)
+            {
+                //if admin
+                if (employee.getIsAdmin() == true)
+                {
+                    Console.WriteLine("\n\n[1] Customer\n[2] Agent\n[3] Matured");
+                    Console.Write("Enter option: ");
+                    //display policies
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    if (option == 1)
+                    {
+                        Console.WriteLine(ipCollection);
+                        //DisplayPolicyMenu();
+                    }
+                    if (option == 2)
+                    {
+                        Console.WriteLine(pList);
+                        //DisplayPolicyMenu();
+                    }
+                    if (option == 3)
+                    {
+                        Console.WriteLine(insurancePolicy.getMaturedDate());
+                        //DisplayPolicyMenu();
+                    }
 
-            //if admin
-            //display ALL policies
-
+                }
+            }
             //if not admin
-            //display polcies that belongs to him
-
-            //add transaction to edit policy (sterling's)
-            //add transaction to generate alerts (bryan's)
+            if (!employee.getIsAdmin())
+            {
+                //display polcies that belongs to him
+                Console.WriteLine(pList);
+                //DisplayPolicyMenu();
+            }
         }
 
-        static void DisplayPolicyMenu()
+        static void DisplayPolicyMenu(InsurancePolicy policy, string[] args)
         {
-            Console.WriteLine("\n1. Generate Alerts");
-            Console.WriteLine("2. Edit Policy");
-        }
 
+            Console.WriteLine("\n\n[1] Generate Alerts\n[2] Edit Policy\n[0] Main Menu");
+            Console.Write("Enter option: ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            if (option == 1)
+            {
+                //generateAlerts();
+            }
+            if (option == 2)
+            {
+                editPolicy(policy);
+            }
+            if (option == 0)
+            {
+                Main(args);
+            }
+        }
         static void editPolicy(InsurancePolicy policy)
         {
             List<Rider> policyRiders = policy.getRiderList();
