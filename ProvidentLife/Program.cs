@@ -145,6 +145,7 @@ namespace ProvidentLife
                 }
                 else if (option == 2) //View policy
                 {
+                    staffViewPolicy(pList);
                     //Selects policy number
                     //display policy menu
                     //staffViewPolicy();
@@ -172,7 +173,7 @@ namespace ProvidentLife
             Console.Write("Select a client: ");
             int clientNo = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Select premium type (1-One Time | 2-Periodic): ");
+            Console.Write("\nSelect premium type (1-One Time | 2-Periodic): ");
             int premiumType = Convert.ToInt32(Console.ReadLine());
 
             if (premiumType == 2)
@@ -181,25 +182,25 @@ namespace ProvidentLife
                 int noOfDays = Convert.ToInt32(Console.ReadLine());
             }
 
-            Console.Write("Enter maturity date: ");
+            Console.Write("\nEnter maturity date: ");
             DateTime maturityDate = Convert.ToDateTime(Console.ReadLine());
             DateTime startDate = DateTime.Now;
             
             while (moreRiders == 1)
             {
-                Console.Write("Enter in policy description: ");
+                Console.Write("\nEnter in policy description: ");
                 string desc = Console.ReadLine();
 
-                Console.Write("Enter policy type: ");
+                Console.Write("\nEnter policy type: ");
                 string policyType = Console.ReadLine();
 
-                Console.Write("Enter payout amount: $");
+                Console.Write("\nEnter payout amount: $");
                 double payOut = Convert.ToDouble(Console.ReadLine());
 
-                Console.Write("Enter total amount: $");
+                Console.Write("\nEnter total amount: $");
                 double totalAmt = Convert.ToDouble(Console.ReadLine());
 
-                Console.Write("Are there any more riders? (1- Yes | 2- No): ");
+                Console.Write("\nAre there any more riders? (1- Yes | 2- No): ");
                 moreRiders = Convert.ToInt32(Console.ReadLine());
 
                 Rider rider = new Rider(riderNo, desc, policyType, payOut, totalAmt, new PercentagePayoutStrategy());
@@ -207,25 +208,30 @@ namespace ProvidentLife
                 riderNo++;
             }
 
-            Console.Write("Enter terms and conditions: ");
+            Console.Write("\nEnter terms and conditions: ");
             string stringTnC = Console.ReadLine();
             TnC.Add(stringTnC);
 
             //Display details of insurance policy
 
-            Console.Write("Confirm to create policy? (1-Confirm | 2-Cancel): ");
+            Console.Write("\nConfirm to create policy? (1-Confirm | 2-Cancel): ");
             int confirm = Convert.ToInt32(Console.ReadLine());
 
             if (confirm == 1)
             {
                 InsurancePolicy policy = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
                 pList.Add(policy);
-                Console.WriteLine("Policy created!");
+                Console.WriteLine("Policy created!\n");
             }
         }
 
-        static void staffViewPolicy()
+        static void staffViewPolicy(List<InsurancePolicy> pList)
         {
+            for (int i = 0; i < pList.Count; i++)
+            {
+                Console.WriteLine(pList[i].getPolicyID());
+            }
+
             //check if user is admin
 
             //if admin
