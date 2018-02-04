@@ -15,6 +15,12 @@ namespace ProvidentLife
         protected List<string> termsAndConds;
         protected List<Rider> riders;
 
+        public IPBuilder()
+        {
+            this.termsAndConds = new List<string>();
+            this.riders = new List<Rider>();
+        }
+
         public IPBuilder withClient(Client client)
         {
             this.client = client;
