@@ -53,9 +53,19 @@ namespace ProvidentLife
             return paymentType;
         }
 
+        public void setPaymentType(string paymentType)
+        {
+            this.paymentType = paymentType;
+        }
+
         public DateTime getDateTimeOfPayment()
         {
             return dateTimeOfPayment;
+        }
+
+        public void setDateTimeOfPayment(DateTime dateTimePayment)
+        {
+            this.dateTimeOfPayment = dateTimePayment;
         }
 
         public string getDetails()

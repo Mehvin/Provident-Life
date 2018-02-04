@@ -28,7 +28,7 @@ namespace ProvidentLife
             return this.periodicDays;
         }
 
-        public override Premium getPremium()
+        public override List<Premium> getPremiums()
         {
             // fee / days?
             throw new NotImplementedException();

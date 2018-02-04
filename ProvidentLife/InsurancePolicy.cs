@@ -72,7 +72,7 @@ namespace ProvidentLife
             Console.WriteLine("Paid fee of $" + fee);
         }
 
-        public abstract Premium getPremium();
+        public abstract List<Premium> getPremiums();
 
         // Strategy pattern
         public double performPayOut(Rider rider, string severity)

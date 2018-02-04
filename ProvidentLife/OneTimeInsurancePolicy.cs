@@ -18,7 +18,7 @@ namespace ProvidentLife
         {
         }
 
-        public override Premium getPremium()
+        public override List<Premium> getPremiums()
         {
             // return a single premium
             throw new NotImplementedException();
