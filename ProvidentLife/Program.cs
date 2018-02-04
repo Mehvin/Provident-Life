@@ -193,7 +193,7 @@ namespace ProvidentLife
 
                 Console.WriteLine("Riders: ");
                 int riderNo = 1;
-                foreach (Rider r in policy.getRiders())
+                foreach (Rider r in policy.getRiderList())
                 {
                     Console.WriteLine("#" + riderNo++);
                     Console.WriteLine("Description: " + r.getDescription());
@@ -474,7 +474,7 @@ namespace ProvidentLife
         static void editPolicy(InsurancePolicy policy)
         {
             List<Rider> policyRiders = policy.getRiderList();
-            int riderNo = policyRiders.GetRange() + 1;
+            int riderNo = policyRiders.Count;
             Console.Write("Add Rider?[Y/N]: ");
             string option = Console.ReadLine();
             while (option == "Y")

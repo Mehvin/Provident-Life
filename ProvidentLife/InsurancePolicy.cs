@@ -103,7 +103,7 @@ namespace ProvidentLife
             this.state = state;
         }
 
-        public List<Rider> getRiders()
+        public List<Rider> getRiderList()
         {
             return riders;
         }
