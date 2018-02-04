@@ -25,6 +25,11 @@ namespace ProvidentLife
             insurancePolicies.Remove(policy);
         }
 
+        public InsurancePolicy getPolicy(int index)
+        {
+            return insurancePolicies[index];
+        }
+
         public void sortNewest()
         {
             // implementation
@@ -62,6 +67,11 @@ namespace ProvidentLife
         public Iterator getIterator()
         {
             return new IPIterator(insurancePolicies);
+        }
+
+        public int getCount()
+        {
+            return insurancePolicies.Count;
         }
     }
 }

@@ -76,7 +76,7 @@ namespace ProvidentLife
             return riders;
         }
 
-        public abstract Premium getPremium();
+        public abstract List<Premium> getPremiums();
 
         // Strategy pattern
         public double performPayOut(Rider rider, string severity)
@@ -105,6 +105,11 @@ namespace ProvidentLife
         public void setIPState(IPState state)
         {
             this.state = state;
+        }
+
+        public List<Rider> getRiders()
+        {
+            return riders;
         }
     }
 }

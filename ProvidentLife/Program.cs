@@ -19,7 +19,8 @@ namespace ProvidentLife
             initialisePolicyList(policyList, employeeList, clientList);
 
             string user;
-            Employee loggedInEmployee; //this is the employee that login
+            Client loggedInClient; //this is the client that logged in
+            Employee loggedInEmployee; //this is the employee that logged in
              
             Console.WriteLine("----Provident Life System----");
             Console.Write("Username: ");
@@ -31,7 +32,8 @@ namespace ProvidentLife
             {
                 if (clientList[i].getName() == user)
                 {
-                    customerSystem(user);
+                    loggedInClient = clientList[i];
+                    customerSystem(loggedInClient);
                 }
             }
 
@@ -94,24 +96,24 @@ namespace ProvidentLife
             pList.Add(p1);            
         }
 
-        static void customerSystem(string user)
+        static void customerSystem(Client client)
         {
-            Console.WriteLine("Welcome back client, " + user + "\n");
+            Console.WriteLine("Welcome back customer, " + client.getName() + "\n");
+
             bool programrun = true;
 
             while (programrun)
             {
                 Console.WriteLine("-----Customer Tasks-----");
-                Console.WriteLine("[1] View Policy");
+                Console.WriteLine("[1] View My Policies");
                 Console.WriteLine("[0] Exit");
 
                 Console.Write("Enter option: ");
                 int option = Convert.ToInt32(Console.ReadLine());
 
-                if (option == 1) //View policy
+                if (option == 1) // View policies
                 {
-                    //view own policies
-                    //customerViewPolicy();
+                    customerViewPolicies(client);
                 }
                 else if (option == 0) //Exit
                 {
@@ -120,9 +122,214 @@ namespace ProvidentLife
             }
         }
 
-        static void customerViewPolicy()
+        static void customerViewPolicies(Client client)
         {
+            while (true)
+            {
+                Console.WriteLine("Your Policies");
 
+                IPCollection ipCollection = client.getIPCollection();
+
+                // Iterate through the policies.
+                Iterator ipIterator = ipCollection.getIterator();
+                int no = 1;
+                while (ipIterator.hasNext())
+                {
+                    InsurancePolicy policy = (InsurancePolicy) ipIterator.next();
+
+                    // Print out policy details inline.
+                    Console.WriteLine("#" + no++);
+                    Console.WriteLine("ID: " + policy.getPolicyID());
+                    Console.WriteLine();
+                }
+
+                // Get user option.
+                Console.WriteLine("\n\n[1] View a policy\n[0] Return home");
+
+                Console.Write("Enter option: ");
+                int option = Convert.ToInt32(Console.ReadLine());
+                if (option == 1) // View policy
+                {
+                    // Get policy no. from user
+                    int policyNo = 0;
+                    while (true)
+                    {
+                        Console.Write("Enter policy no: ");
+                        policyNo = Convert.ToInt32(Console.ReadLine());
+
+                        if (policyNo >= 0 && policyNo <= ipCollection.getCount())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nInvalid Input!");
+                        }
+                    }
+
+                    customerViewAPolicy(ipCollection.getPolicy(policyNo - 1));
+                }
+                else if (option == 0) // Return home
+                {
+                    break;
+                }
+            }
+        }
+
+        static void customerViewAPolicy(InsurancePolicy policy)
+        {
+            bool isRunning = false;
+            while (isRunning)
+            {
+                // Display policy details.
+                Console.WriteLine("ID: " + policy.getPolicyID());
+
+                Console.WriteLine("Terms & Conditions: ");
+                int tAndCNo = 1;
+                foreach (string tAndC in policy.getTermsCond())
+                {
+                    Console.WriteLine("#" + (tAndCNo++) + tAndC);
+                }
+
+                Console.WriteLine("Riders: ");
+                int riderNo = 1;
+                foreach (Rider r in policy.getRiders())
+                {
+                    Console.WriteLine("#" + riderNo++);
+                    Console.WriteLine("Description: " + r.getDescription());
+                    Console.WriteLine("Total Amount payable: $" + r.getTotalAmountPayable());
+                    Console.WriteLine("Pay out amount: $" + r.getPayOutAmount());
+                    Console.WriteLine();
+                }
+
+                // Get outstanding premiums.
+                List<Premium> premiums = policy.getPremiums();
+
+                bool hasOutstandingPremiums = premiums.Count > 0;
+                if (hasOutstandingPremiums) // Has outstanding premiums.
+                {
+                    Console.WriteLine("Has outstanding premiums!");
+
+                    Console.WriteLine("\n\n[1] Pay Outstanding Premium(s)\n[0] Return home");
+                }
+                else // Has no outstanding premiums.
+                {
+                    Console.WriteLine("Has no outstanding premium!");
+
+                    Console.WriteLine("[0] Return home");
+                }
+
+                while (true)
+                {
+                    Console.Write("Enter option: ");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    if (option == 1 && hasOutstandingPremiums) // Customer wants to pay premium using credit card.
+                    {
+                        customerPayCreditCard(premiums);
+                        break;
+                    }
+                    else if (option == 0) // Return back to the list of policies
+                    {
+                        isRunning = false;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid option.");
+                    }
+                }
+            }
+        }
+
+        static void customerPayCreditCard(List<Premium> premiums)
+        {
+            bool isRunning = true;
+            while (isRunning)
+            {
+                // If no premiums then return function.
+                if (premiums.Count == 0)
+                {
+                    Console.WriteLine("No outstanding premiums!");
+                    isRunning = false;
+                    break;
+                }
+
+                // Display premiums.
+                int no = 1;
+                foreach (Premium p in premiums)
+                {
+                    Console.WriteLine("#" + no++);
+                    Console.WriteLine("ID: " + p.getPremiumID());
+                    Console.WriteLine("Details: " + p.getDetails());
+                    Console.WriteLine("Due Date: " + p.getDueDate().ToString());
+                    Console.WriteLine("Amount Payable: $" + p.getAmountPayable().ToString(".00"));
+                    Console.WriteLine();
+                }
+
+                // Get chosen premium from user.
+                int premiumNo;
+                while (true)
+                {
+                    Console.Write("Enter premium no: ");
+                    premiumNo = Convert.ToInt32(Console.ReadLine());
+
+                    if (premiumNo >= 0 && premiumNo <= premiums.Count)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nInvalid Input!");
+                    }
+                }
+
+                // Retrieve premium.
+                Premium premium = premiums[premiumNo - 1];
+
+                // Get credit card info.
+                Console.Write("Enter credit card no: ");
+                int creditCardNo = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter CCV no: ");
+                int ccv = Convert.ToInt32(Console.ReadLine());
+
+                // Process payment
+                bool paymentSuccess = CreditCardSystem.getInstance().processPayment(creditCardNo, ccv);
+
+                if (paymentSuccess)
+                {
+                    Console.WriteLine("Payment successful!");
+                    Console.WriteLine("Receipt no: " + premium.getPremiumID());
+                    premium.setPaymentType("Credit Card");
+                    premium.setDateTimeOfPayment(DateTime.Now);
+                }
+                else
+                {
+                    Console.WriteLine("Payment unsuccessful!");
+                }
+
+                // Get user option if he wants to continue or return.
+                while (true)
+                {
+                    Console.WriteLine("\n\n[1] Pay Another Outstanding Premium(s)\n[0] Return back");
+                    Console.Write("Enter option: ");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    if (option == 1) // Pay another outstandin premium
+                    {
+                        isRunning = true;
+                        break;
+                    }
+                    else if (option == 0) // Return back
+                    {
+                        isRunning = false;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid option.");
+                    }
+                }
+            }
         }
 
         static void staffSystem(string user, List<Client> cList, Employee loggedInEmployee, List<InsurancePolicy> pList)
@@ -176,10 +383,11 @@ namespace ProvidentLife
             Console.Write("\nSelect premium type (1-One Time | 2-Periodic): ");
             int premiumType = Convert.ToInt32(Console.ReadLine());
 
+            int noOfDays = 0; //placeholder
             if (premiumType == 2)
             {
                 Console.Write("Number of days per period: ");
-                int noOfDays = Convert.ToInt32(Console.ReadLine());
+                noOfDays = Convert.ToInt32(Console.ReadLine());
             }
 
             Console.Write("\nEnter maturity date: ");
@@ -219,9 +427,22 @@ namespace ProvidentLife
 
             if (confirm == 1)
             {
-                InsurancePolicy policy = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
-                pList.Add(policy);
-                Console.WriteLine("Policy created!\n");
+                if (premiumType == 1) //one-time
+                {
+                    InsurancePolicy policy1 = new OneTimeInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList);
+                    pList.Add(policy1);
+                    Console.WriteLine("Policy created!\n");
+                }
+                else if (premiumType == 2) //perodic
+                {
+                    InsurancePolicy policy2 = new PeriodicInsurancePolicy(TnC, startDate, maturityDate, cList[clientNo], loggedInEmployee, riderList, noOfDays);
+                    pList.Add(policy2);
+                    Console.WriteLine("Policy created!\n");
+                }
+            }
+            else if (confirm == 2)
+            {
+                Console.WriteLine("Policy NOT created!\n");
             }
         }
 

@@ -53,14 +53,9 @@ namespace ProvidentLife
             this.address = address;
         }
 
-        public void addPolicy(InsurancePolicy policy)
+        public IPCollection getIPCollection()
         {
-            ipCollection.addPolicy(policy);
-        }
-
-        public void removePolicy(InsurancePolicy policy)
-        {
-            ipCollection.removePolicy(policy);
+            return ipCollection;
         }
     }
 }

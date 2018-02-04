@@ -49,6 +49,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="IteratorDesign\IPCollection.cs" />
     <Compile Include="IteratorDesign\IPIterator.cs" />
+    <Compile Include="SingletonDesign\CreditCardSystem.cs" />
     <Compile Include="StateDesign\InactiveIPState.cs" />
     <Compile Include="InsurancePolicy.cs" />
     <Compile Include="StateDesign\IPState.cs" />
